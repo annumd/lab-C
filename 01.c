@@ -7,7 +7,7 @@ void merge(int[],int);
 
 void main()
 {
-	int len,i,a[20],ch;
+	int len,i,a[20],ch,con;
 	printf("Enter number of elements in the array: ");
 	scanf("%d",&len);
 	printf("Enter the elements: ");
@@ -16,32 +16,38 @@ void main()
 		scanf("%d",&a[i]);
 	}
 	printf("-array recorded- \n");
-	printf(" Do you want to \n (1) search \n (2) insertion \n (3) deletion \n (4) sorting \n (5) merge \n");
-	printf(" Enter your choice: ");
-	scanf("%d",&ch);
+	do
+	{
+		printf(" Do you want to \n (1) search \n (2) insertion \n (3) deletion \n (4) sorting \n (5) merge \n ");
+		printf(" Enter your choice: ");
+		scanf("%d",&ch);
+		if (ch==1)
+		{
+			search(a,len);	 /// a is array name
+		}
+		if (ch==2)
+		{
+			insert(a,len);	
+		}
+		if (ch==3)
+		{
+			delete(a,len);
+		}
+		if (ch==4)
+		{
+			sort(a,len);
+		}
+		if (ch==5)
+		{
+			merge(a,len);
+		}
 	
-	if (ch==1)
-	{
-		search(a,len);	 /// a is array name
-	}
-	if (ch==2)
-	{
-		insert(a,len);	
-	}
-	if (ch==3)
-	{
-		delete(a,len);
-	}
-	if (ch==4)
-	{
-		sort(a,len);
-	}
-	if (ch==5)
-	{
-		merge(a,len);
-	}
-}
 
+		
+		printf("\n Do you want to continue? (PRESS 1 TO CONTINUE) : \n");
+		scanf("%d",&con);
+	}while(con==1);
+}
 void search(int a[10],int len)  ///function works 
 {
 	int i,flag=0,a1,loc=0;

@@ -188,3 +188,74 @@ void merge(int a[20],int len) 	///function works
 		printf("%d",c[i]);
 	}
 }
+
+/// output
+ubuntu@ubuntu-H81M-S:~/SCS1051123$ gcc operation.c
+ubuntu@ubuntu-H81M-S:~/SCS1051123$ ./a.out
+Enter number of elements in the array: 5
+Enter the elements: 1 2 4 5 6
+-array recorded- 
+ Do you want to 
+ (1) search 
+ (2) insertion 
+ (3) deletion 
+ (4) sorting 
+ (5) merge 
+  Enter your choice: 1
+Enter the number to be searched for : 1
+number found at 1
+ Do you want to continue? (PRESS 1 TO CONTINUE) : 
+1
+ Do you want to 
+ (1) search 
+ (2) insertion 
+ (3) deletion 
+ (4) sorting 
+ (5) merge 
+  Enter your choice: 2
+Existing array is displayed below:
+ 12456
+Enter the number to be inserted:
+ 6
+Enter the position where it has to be inserted:
+ 3
+The new array is displayed below
+126456
+ Do you want to continue? (PRESS 1 TO CONTINUE) : 
+1 
+ Do you want to 
+ (1) search 
+ (2) insertion 
+ (3) deletion 
+ (4) sorting 
+ (5) merge 
+  Enter your choice: 3
+
+Enter the number to be deleted:
+ 6
+array elements are:1245
+ Do you want to continue? (PRESS 1 TO CONTINUE) : 
+1
+ Do you want to 
+ (1) search 
+ (2) insertion 
+ (3) deletion 
+ (4) sorting 
+ (5) merge 
+  Enter your choice: 4
+Sorted array is :12456
+ Do you want to continue? (PRESS 1 TO CONTINUE) : 
+1
+ Do you want to 
+ (1) search 
+ (2) insertion 
+ (3) deletion 
+ (4) sorting 
+ (5) merge 
+  Enter your choice: 5
+Enter number of elements of the second array: 3
+Enter the array elements : 2 3 5
+The merged array is : 12456235
+ Do you want to continue? (PRESS 1 TO CONTINUE) : 
+0
+///

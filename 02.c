@@ -2,8 +2,7 @@
 
 struct poly 
 {
-    float coeff;
-    int exp;
+    int exp,coeff;
 } p1[10], p2[10], p3[20];
 
 int readpoly(struct poly []);
@@ -37,7 +36,7 @@ int readpoly(struct poly p[])
     for (i = 0; i < t1; i++) 
     {
         printf("Enter the coeff for element %d: ", i + 1);
-        scanf("%f", &p[i].coeff);
+        scanf("%d", &p[i].coeff);
         printf("Enter the exp for element %d: ", i + 1);
         scanf("%d", &p[i].exp);
     }
@@ -67,15 +66,15 @@ void displaypoly(struct poly p[], int term)
         }
         if (p[i].exp == 0) 
         {
-            printf("%f", p[i].coeff);
+            printf("%d", p[i].coeff);
         } 
         else if (p[i].exp == 1) 
         {
-            printf("%fX", p[i].coeff);
+            printf("%dX", p[i].coeff);
         } 
         else 
         {
-            printf("%fX^%d", p[i].coeff, p[i].exp);
+            printf("%dX^%d", p[i].coeff, p[i].exp);
         }
     }
     printf("\n");
@@ -113,7 +112,6 @@ int addpoly(struct poly p1[], struct poly p2[], int t1, int t2, struct poly p3[]
     }
     return k;
 }
-
 ///  output
 ubuntu@ubuntu-H81M-S:~/SCS1051123$ gcc poly.c
 ubuntu@ubuntu-H81M-S:~/SCS1051123$ ./a.out
@@ -123,17 +121,20 @@ Enter the coeff for element 1: 4
 Enter the exp for element 1: 3
 Enter the coeff for element 2: 3
 Enter the exp for element 2: 2
-Enter the coeff for element 3: 3
+Enter the coeff for element 3: 6
 Enter the exp for element 3: 1
-First polynomial: 4.000000X^3+3.000000X^2+3.000000X
+First polynomial: 4X^3+3X^2+6X
 Enter the number of terms: 3
 Enter the coeff and exp for each term
-Enter the coeff for element 1: 10
+Enter the coeff for element 1: 5
 Enter the exp for element 1: 3
-Enter the coeff for element 2: 4
+Enter the coeff for element 2: 1
 Enter the exp for element 2: 2
-Enter the coeff for element 3: 4
+Enter the coeff for element 3: 3
 Enter the exp for element 3: 1
-Second polynomial: 10.000000X^3+4.000000X^2+4.000000X
-Resultant polynomial: 14.000000X^3+7.000000X^2+7.000000X
+Second polynomial: 5X^3+1X^2+3X
+Resultant polynomial: 9X^3+4X^2+9X
+ubuntu@ubuntu-H81M-S:~/SCS1051123$ 
+
+///
 ///

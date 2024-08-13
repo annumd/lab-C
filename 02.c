@@ -12,16 +12,18 @@ int addpoly(struct poly[], struct poly[], int, int, struct poly[]);
 int main() 
 {
     int t1, t2, t3;
+    printf("-Enter first polynomial-\n");
     t1 = readpoly(p1);
-    printf("First polynomial: ");
+    printf("\nFirst polynomial: ");
     displaypoly(p1, t1);
 
+    printf("\n-Enter second polynomial-\n");
     t2 = readpoly(p2);
-    printf("Second polynomial: ");
+    printf("\nSecond polynomial: ");
     displaypoly(p2, t2);
 
     t3 = addpoly(p1, p2, t1, t2, p3);
-    printf("Resultant polynomial: ");
+    printf("\nResultant polynomial: ");
     displaypoly(p3, t3);
 
     return 0;
@@ -32,7 +34,7 @@ int readpoly(struct poly p[])
     int t1, i;
     printf("Enter the number of terms: ");
     scanf("%d", &t1);
-    printf("Enter the coeff and exp for each term\n");
+    printf("--Enter the coeff and exp for each term--\n");
     for (i = 0; i < t1; i++) 
     {
         printf("Enter the coeff for element %d: ", i + 1);
@@ -112,29 +114,37 @@ int addpoly(struct poly p1[], struct poly p2[], int t1, int t2, struct poly p3[]
     }
     return k;
 }
-///  output
-ubuntu@ubuntu-H81M-S:~/SCS1051123$ gcc poly.c
-ubuntu@ubuntu-H81M-S:~/SCS1051123$ ./a.out
-Enter the number of terms: 3
-Enter the coeff and exp for each term
-Enter the coeff for element 1: 4
-Enter the exp for element 1: 3
-Enter the coeff for element 2: 3
-Enter the exp for element 2: 2
-Enter the coeff for element 3: 6
-Enter the exp for element 3: 1
-First polynomial: 4X^3+3X^2+6X
-Enter the number of terms: 3
-Enter the coeff and exp for each term
-Enter the coeff for element 1: 5
-Enter the exp for element 1: 3
-Enter the coeff for element 2: 1
-Enter the exp for element 2: 2
-Enter the coeff for element 3: 3
-Enter the exp for element 3: 1
-Second polynomial: 5X^3+1X^2+3X
-Resultant polynomial: 9X^3+4X^2+9X
-ubuntu@ubuntu-H81M-S:~/SCS1051123$ 
 
-///
+///  output
+ubuntu@ubuntu-H81M-S:~/SCS1051123$ ./a.out
+-Enter first polynomial-
+Enter the number of terms: 3
+--Enter the coeff and exp for each term--
+Enter the coeff for element 1: 7
+Enter the exp for element 1: 5
+Enter the coeff for element 2: 5
+Enter the exp for element 2: 2
+Enter the coeff for element 3: 1
+Enter the exp for element 3: 0
+
+First polynomial: 7X^5+5X^2+1
+
+-Enter second polynomial-
+Enter the number of terms: 4
+--Enter the coeff and exp for each term--
+Enter the coeff for element 1: 4
+Enter the exp for element 1: 4
+Enter the coeff for element 2: 3
+Enter the exp for element 2: 3
+Enter the coeff for element 3: 5
+Enter the exp for element 3: 2
+Enter the coeff for element 4: 6
+Enter the exp for element 4: 0
+
+Second polynomial: 4X^4+3X^3+5X^2+6
+
+Resultant polynomial: 7X^5+4X^4+3X^3+10X^2+7
+
+
+
 ///

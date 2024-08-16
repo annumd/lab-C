@@ -13,13 +13,13 @@ void main()
 	printf("Enter the elements: ");
 	for(i=0;i<len;i++)
 	{
-		scanf("%d",&a[i]);
+		scanf("%d",&a[i]);	//reads the elements
 	}
 	printf("-array recorded- \n");
 	do
 	{
-		printf(" Do you want to \n (1) search \n (2) insertion \n (3) deletion \n (4) sorting \n (5) merge \n ");
-		printf(" Enter your choice: ");
+		printf(" Do you want to \n (1) search \n (2) insertion \n (3) deletion \n (4) sorting \n (5) merge \n ");	//prints menu
+		printf(" Enter your choice: "); 	// asks for users choice
 		scanf("%d",&ch);
 		if (ch==1)
 		{
@@ -42,22 +42,20 @@ void main()
 			merge(a,len);
 		}
 	
-
-		
 		printf("\n Do you want to continue? (PRESS 1 TO CONTINUE) : \n");
 		scanf("%d",&con);
 	}while(con==1);
 }
-void search(int a[10],int len)  ///function works 
+void search(int a[10],int len)  
 {
 	int i,flag=0,a1,loc=0;
 	printf("Enter the number to be searched for : ");
-	scanf("%d",&a1);
-	for(i=0;i<len;i++)
+	scanf("%d",&a1);	//reads number to be searched for
+	for(i=0;i<len;i++)	//goes through each element
 	{
-		if(a1==a[i])
+		if(a1==a[i])	//if element found
 			{
-				flag=1;
+				flag=1;	//set flag variable as 1
 				loc=i+1;
 				break;
 			}
@@ -66,20 +64,20 @@ void search(int a[10],int len)  ///function works
 		{
 			printf("number found at %d",loc);
 		}
-		else
+	else
 		{
 			printf("number not found");
 		}
 	
 }
 		
-void insert(int a[20],int len)  ///function works
+void insert(int a[20],int len)  
 {
 	int num,i,pos;
 	printf("Existing array is displayed below:\n ");
 	for(i=0;i<len;i++)
 	{
-		printf("%d",a[i]);	/// prints the existing array
+		printf("%d",a[i]);	// prints the existing array
 	}
 	printf("\nEnter the number to be inserted:\n ");
 	scanf("%d",&num);
@@ -91,9 +89,8 @@ void insert(int a[20],int len)  ///function works
 		a[i+1]=a[i];
 		i--;
 	}
-	a[pos-1]=num; ///must be =
+	a[pos-1]=num; 
 
-        
 	printf("The new array is displayed below\n");
 	for(i=0;i<=len;i++)
 	{
@@ -101,7 +98,7 @@ void insert(int a[20],int len)  ///function works
 	}
 }
 
-void delete(int a[20],int len)  ///function works
+void delete(int a[20],int len)  
 {
 	int i=0,num,pos=-1,flag=0;
 	printf("\nEnter the number to be deleted:\n ");
@@ -139,7 +136,7 @@ void delete(int a[20],int len)  ///function works
 	
 }	
 	
-void sort(int a[20],int len)  ///function works
+void sort(int a[20],int len)  
 {
 	int i=0,j,temp;
 	for(i=0;i<len;i++)
@@ -162,7 +159,7 @@ void sort(int a[20],int len)  ///function works
 	
 }
 
-void merge(int a[20],int len) 	///function works
+void merge(int a[20],int len) 	
 {
 	int b[50],sizeb,i=0,c[100],j;
 	printf("Enter number of elements of the second array: ");
@@ -170,7 +167,7 @@ void merge(int a[20],int len) 	///function works
 	printf("Enter the array elements : ");
 	for(i=0;i<sizeb;i++)
 	{
-		scanf("%d",&b[i]);
+		scanf("%d",&b[i]);	//reads the array
 	}
 	for(i=0;i<len;i++)
 	{

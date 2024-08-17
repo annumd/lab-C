@@ -65,12 +65,11 @@ void sparse(int a[20][20],int r,int c)
 	// Initialize the sparse matrix with dimensions and count
 	b[0][0]=r; 
 	b[0][1]=c;
-	b[0][2]=0;
 	
 	// Traverse the original matrix to fill sparse matrix `b`
     	int k = 1; // Start from 1 because b[0] contains dimensions
 	
-	for(i=1;i<r;i++)
+	for(i=0;i<r;i++)
 	{
 		for(j=0;j<c;j++)
 		{

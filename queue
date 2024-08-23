@@ -1,0 +1,187 @@
+Conversations
+0.35 GB of 15 GB used
+Terms · Privacy · Program Policies
+Last account activity: 0 minutes ago
+Currently being used in 3 other locations · Details
+
+#include<stdio.h>
+int MAXSIZE=10,f=-1,r=-1;
+void create_queue(int q[]);
+void enqueue(int q[]);
+void dequeue(int q[]);
+void fpeak(int q[]);
+void rpeak(int q[]);
+void isfull(int q[]);
+void isempty(int q[]);
+void display(int q[]);
+void main()
+{
+   int queue[50],ch;
+   do
+    {
+      printf("enter your choice:1-create_queue,2-enqueue,3-dequeue,4-fpeak,5-rpeak,6-isfull,7-isempty,8-display,9-exit\n");
+      scanf("%d",&ch);
+      if(ch==1)
+       {
+        create_queue(queue);
+        }
+      if(ch==2)
+       {
+        enqueue(queue);
+       }
+      if(ch==3)
+       {
+         dequeue(queue);
+       }
+      if(ch==4)
+      {
+        fpeak(queue);
+      }
+      if(ch==5)
+      {
+        rpeak(queue);
+      }
+      if(ch==6)
+      {
+        isfull(queue);
+      }
+      if(ch==7)
+      {
+        isempty(queue);
+      }
+      if(ch==8)
+      {
+        display(queue);
+      }
+   }
+      while(ch!=9);
+    
+}
+
+void create_queue(int q[])
+{
+    int n,i,e; 
+     printf("enter the queue size:");  
+     scanf("%d",&n);
+        for(i=0;i<n;i++)
+         {
+              if(f==-1 && r==-1)
+               {
+                 f++;
+                 r++;
+               }
+            else
+               {
+                 r++;
+               }
+            printf("enter the elements to be inserted:\n");
+            scanf("%d",&e);
+            q[r]=e;
+         }
+}
+
+void enqueue(int q[])
+ {
+    int e;
+    if(r==MAXSIZE-1)
+      {
+        printf("queue is full\n");
+      }
+    if(r<MAXSIZE-1)
+    {
+          if(f==-1 && r==-1)
+          {
+               f++;
+               r++;
+          }
+          else
+          {
+                r++;
+          }    
+     }
+      printf("enter the element to be inserted");
+          scanf("%d",&e);
+          q[r]=e;
+ }
+
+void dequeue(int q[])
+{
+    if(f==-1 && r==-1)
+    {
+        printf("Queue is empty");
+    }
+    else
+    {
+        printf("%d",q[f]);
+        f++;
+        if(f>r)
+        {
+            f=-1;
+            r=-1;
+        }
+    }
+}
+
+
+void fpeak(int q[])
+{
+    if(f==-1 && r==-1)
+        {
+        printf("queue is empty\n");
+        }
+    printf("%d",q[r]);
+
+}
+
+void rpeak(int q[])
+{
+    if(f==-1 && r==-1)
+      {
+        printf("queue is empty\n");
+      }
+    else
+      {
+        printf("%d",q[r]);
+      }
+}
+
+void isfull(int q[])
+{
+    if(r==MAXSIZE-1)
+      {
+       printf("Queue is full \n");
+      }
+    else
+      {
+        printf("Queue is not full\n");
+      }
+}
+
+void isempty(int q[])
+ {
+    if(f==-1 && r==-1)
+     {
+        printf("queue is empty\n");
+     }
+    else
+      {
+        printf("queue is not full\n");
+      }
+ }
+
+void display(int q[])
+{
+    int i;
+    if(f==-1 && r==-1)
+     {
+        printf("queue is empty\n");
+     }
+    else
+     {
+        for(i=f;i<=r;i++)
+         {
+            printf("%d ",q[i]);
+         }
+         printf("\n");
+     }
+}

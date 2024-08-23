@@ -1,0 +1,146 @@
+#include<stdio.h>
+int MAXSIZE=10,top=-1;
+void create_stack(int s[]);
+void push(int s[]);
+void pop(int s[]);
+void isempty(int s[]);
+void isfull(int s[]);
+void peak(int s[]);
+void display(int s[]);
+void main()
+{
+ int stack[50],ch;
+ char ch1;
+ do{
+ 
+ printf("\nenter the choice: \n 1-create_stack \n 2-push \n 3-pop \n 4-isempty \n 5-isfull \n 6-peak \n 7-display \n 8-exit \n");
+ scanf("%d",&ch);
+ 
+ if(ch==1)
+  {
+    create_stack(stack);
+  }  
+  else if(ch==2)
+   {
+    push(stack);
+   }  
+   else if(ch==3)
+   {
+   pop(stack);
+   } 
+  else  if(ch==4)
+   {
+   isempty(stack);
+   }
+   else if(ch==5)
+   {
+   isfull(stack);
+   }
+  else if(ch==6)
+   {
+   peak(stack);
+   }
+   else if(ch==7)
+   {
+   display(stack);
+   }
+   }
+  while(ch!=8);
+}
+void create_stack(int s[])
+{
+  int n,i,e;
+  printf("enter stack size:");
+  scanf("%d",&n);
+  for(i=0;i<n;i++)
+  {
+   top++;
+   printf("enter element");
+   scanf("%d",&e);
+   s[top]=e;
+  }
+  printf("stack insertion completed \n");
+}
+
+void push(int s[])
+{
+ int e;
+ if(top==MAXSIZE-1)
+ {
+    printf("STACK FULL");
+ }
+ else
+ {
+ printf("enter element to be inserted");
+ scanf("%d",&e);  
+ top++;
+ s[top]=e;
+ }
+}
+
+void pop(int s[])
+{
+ if(top==-1)
+ {
+ printf("stack empty");
+ }
+ else if(top>-1)
+ {
+  printf("%d",s[top]);
+  top--;
+ }
+}
+
+void isempty(int s[])
+{
+ if(top==-1)
+ {
+  printf("stack is empty");
+ }
+ else
+ {
+  printf("stack is not empty");
+ }
+}
+
+void isfull(int s[])
+{
+if(top==MAXSIZE-1)
+ {
+ printf("stack is full");
+ }
+ else
+ {
+ printf("not full");
+ }
+}
+
+void peak(int s[])
+{
+ if(top==-1)
+ {
+  printf("stack is empty");
+ }
+ else if(top>-1)
+ {
+  printf("peak element is %d ",s[top]);
+ }
+}
+
+void display(int s[])
+{
+int i;
+ if(top==-1)
+ {
+  printf("stack is empty");
+ }
+ else if(top>-1)
+ {
+  printf("elements are \n ");
+  for(i=0;i<=top;i++)
+   {
+    printf("%d ",s[i]);
+   }
+  }
+ }
+ 

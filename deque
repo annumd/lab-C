@@ -1,0 +1,134 @@
+#include<stdio.h>
+int MAXSIZE=10,f=-1,r=-1;
+void fenqueue(int q[]);
+void fdequeue(int q[]);
+void renqueue(int q[]);
+void rdequeue(int q[]);
+void display(int q[]);
+void main()
+{
+        int dqueue[50];
+	int ch;
+do
+{
+    printf("\nenter choice:\n1-fenqueue\n2-fdequeue\n3-renqueue\n4-rdequeue\n5-display\n6-exit\n\n");
+    scanf("%d",&ch);
+    	if(ch==1)
+    	{
+    		fenqueue(dqueue);
+    	}
+    	if(ch==2)
+    	{
+    		fdequeue(dqueue);
+    	}
+    	if(ch==3)
+    	{
+    		renqueue(dqueue);
+    	}
+    	if(ch==4)
+    	{
+    		rdequeue(dqueue);
+    	}
+    	if(ch==5)
+    	{
+    		display(dqueue);
+    	}
+ }
+  while(ch!=6);
+}
+
+void fenqueue(int q[])
+ {
+          int e;
+      if(f==0 || f==-1)
+      {
+      	   printf("\n enqueue is not possible\n");
+      }
+      else
+      {
+           f=f-1;
+             printf("enter the element:");
+             scanf("%d",&e);
+             q[f]=e;
+      }
+}
+
+void renqueue(int q[])
+{
+	   int e;
+	if(r==MAXSIZE-1)
+	{
+            printf("Insertion at real end is not possible");
+        }
+        if(f==-1 && r==-1)
+        {
+        	f++;
+        	r++;
+        }
+        else
+        {
+        	r++;
+        }
+           printf("enter the element to be inserted");
+           scanf("%d",&e);
+           q[r]=e;
+}
+
+ void fdequeue(int q[])
+ {
+ 	if(f==-1 && r==-1)
+ 	{
+ 		printf("\n QUEUE EMPTY\n");
+ 	}
+ 	else
+ 	{
+ 		printf("%d\n",q[f]);   
+ 		  if(f==r)
+ 		  {
+ 		     f=-1;
+ 		     r=-1;
+ 		  }
+ 		  else
+ 		  {
+ 		    f=f+1;
+ 		  }
+         }
+ }
+ 
+void rdequeue(int q[])
+{
+	if(f=-1 && r==-1)
+	{
+		printf("QUEUE EMPTY\n");
+	}
+	else
+	{
+		printf("%d\n",q[r]);
+		if(f==r)
+		{
+			f=-1;
+			r=-1;
+		}
+		else
+		{
+			r=r-1;
+		}
+	}
+}	
+      
+void display(int q[])
+{
+          int i;
+	if(f==-1 && r==-1)
+	{
+		printf("QUEUE EMPTY\n");
+	}
+	else
+	{
+		for(i=f;i<=r;i++)
+		{
+			printf("%d  ",q[i]);
+		}
+	}
+}
+	

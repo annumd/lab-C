@@ -1,0 +1,124 @@
+#include<stdio.h>
+int MAXSIZE=10,f=-1,r=-1;
+void enqueue(int q[]);
+void dequeue(int q[]);
+void isfull(int q[]);
+void isempty(int q[]);
+void display(int q[]);
+void main()
+{
+	int cqueue[50],ch;
+ do
+  {
+   printf("\n enter choice:\n1-enqueue\n2-dequeue\n3-isfull\n4-isempty\n5-display\n6-exit\n");
+   scanf("%d",&ch);
+   	if(ch==1)
+   	{
+   		enqueue(cqueue);
+   	}
+   	if(ch==2)
+   	{
+   		dequeue(cqueue);
+   	}
+   	if(ch==3)
+   	{
+		isfull(cqueue);
+	}
+	if(ch==4)
+	{
+		isempty(cqueue);
+	}
+	if(ch==5)
+	{
+		display(cqueue);
+	}
+  }
+ while(ch!=6);	
+}
+
+void enqueue(int q[])
+{
+             int e;
+	if(f==(r+1)%MAXSIZE)
+	{
+		printf("CIRCULAR QUEUE IS FULL\n");
+	}
+	else
+	{
+		if(f==-1 && r==-1)
+		{
+		     f=0;
+		     r=0;
+		}
+		else
+		{
+		     r=(r+1)%MAXSIZE;
+		}
+	     printf("enter the element:");
+	     scanf("%d",&e);
+	     q[r]=e;
+	}
+}
+
+void dequeue(int q[])
+{
+	if(f==-1 && r==-1)
+	{
+		printf("QUEUE IS EMPTY\n");
+	}
+	else
+	{
+	       printf("%d\n",q[f]);
+		   if(f==r)
+		   {
+		   	f=-1;
+		   	r=-1;
+		   }
+		   else
+		   {
+		   	f=(f+1)%MAXSIZE;
+		   }
+	}
+}
+
+void isfull(int q[])
+{
+	if(f==(r+1)%MAXSIZE)
+	{
+		printf("QUEUE IS FULL\n");
+	}
+	else
+	{
+		printf("QUEUE IS NOT FULL\n");
+	}
+}
+
+void isempty(int q[])
+{
+	if(f==-1 && r==-1)
+	{
+		printf("QUEUE IS EMPTY\n");
+	}
+	else
+	{
+		printf("QUEUE IS NOT EMPTY\n");
+	}
+}
+
+void display(int q[])
+{
+	    int i;
+	if(f==-1 &&r==-1)
+	{
+		printf("QUEUE IS EMPTY\n");
+	}
+	else
+	{
+		i=f;
+		while(i!=(r+1)%MAXSIZE)
+		{
+			printf("%d  ",q[i]);
+		          i=(i+1)%MAXSIZE;
+		}
+	}
+}

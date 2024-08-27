@@ -1,0 +1,160 @@
+#include <stdio.h>
+
+#define MAX_SIZE 10  // Define a maximum stack size to prevent overflow issues
+
+int stack[MAX_SIZE], top = -1, n;
+
+void push();
+void pop();
+void display();
+
+int main()  
+{
+    int ch = 0;  // Initialize ch to avoid using an uninitialized variable
+
+    printf("Enter the maximum size of stack (max %d): ", MAX_SIZE);
+    scanf("%d", &n);
+
+    // Ensure n does not exceed MAX_SIZE
+    if (n > MAX_SIZE) 
+    {
+        printf("Maximum size exceeds the defined limit of %d. Setting to %d.\n", MAX_SIZE, MAX_SIZE);
+        n = MAX_SIZE;
+    }
+
+    while (ch != 4) 
+    {
+        printf("\nEnter your choice:\n");
+        printf("1. Push\n2. Pop\n3. Display\n4. Exit\n");
+        scanf("%d", &ch);
+
+        switch (ch) 
+        {
+            case 1:
+                push();
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Wrong choice. Please enter a valid option.\n");
+                break;
+        }
+    }
+
+    return 0;  // Return from main
+}
+
+void push() 
+{
+    int item;
+    if (top >= n - 1) 
+    {
+        printf("Stack overflow. Unable to push %d\n", item);
+    } 
+    else 
+    {
+        printf("Enter the element to push: ");
+        scanf("%d", &item);
+        top = top + 1;
+        stack[top] = item;
+        printf("%d pushed to stack\n", item);
+    }
+}
+
+void pop() 
+{
+    int item;
+    if (top == -1) 
+    {
+        printf("Stack underflow. No elements to pop.\n");
+    } 
+    else 
+    {
+        item = stack[top];
+        top = top - 1;
+        printf("Popped item: %d\n", item);
+    }
+}
+
+void display() 
+{
+    if (top == -1) 
+    {
+        printf("Stack is empty.\n");
+    } 
+    else 
+    {
+        printf("Stack elements:\n");
+        for (int i = 0; i <= top; i++) 
+        {
+            printf("%d\t", stack[i]);
+        }
+        printf("\n");
+    }
+}
+
+OUTPUT
+ubuntu@ubuntu-H81M-S:~/SCS1051123$ gcc stack.c
+ubuntu@ubuntu-H81M-S:~/SCS1051123$ ./a.out
+Enter the maximum size of stack (max 10): 6
+
+Enter your choice:
+1. Push
+2. Pop
+3. Display
+4. Exit
+1
+Enter the element to push: 1
+1 pushed to stack
+
+Enter your choice:
+1. Push
+2. Pop
+3. Display
+4. Exit
+1
+Enter the element to push: 2
+2 pushed to stack
+
+Enter your choice:
+1. Push
+2. Pop
+3. Display
+4. Exit
+1
+Enter the element to push: 3
+3 pushed to stack
+
+Enter your choice:
+1. Push
+2. Pop
+3. Display
+4. Exit
+3
+Stack elements:
+1	2	3	
+
+Enter your choice:
+1. Push
+2. Pop
+3. Display
+4. Exit
+2
+Popped item: 3
+
+Enter your choice:
+1. Push
+2. Pop
+3. Display
+4. Exit
+4
+Exiting...
+ubuntu@ubuntu-H81M-S:~/SCS1051123$ 
+

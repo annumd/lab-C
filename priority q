@@ -1,0 +1,194 @@
+#include <stdio.h>
+#define MAX 5
+
+int front = -1;
+int rear = -1;
+
+struct priority
+{
+    int item;
+    int priority;
+} pq[MAX];
+
+void enq(int data, int p);
+void disp();
+void deq();
+void sort();
+
+int main()
+{
+    int ch, data, p;
+    while (1)
+    {
+        printf("-MENU-\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &ch);
+        switch (ch)
+        {
+        case 1:
+            printf("Enter the data: ");
+            scanf("%d", &data);
+            printf("Enter the priority: ");
+            scanf("%d", &p);
+            enq(data, p);
+            break;
+        case 2:
+            deq();
+            break;
+        case 3:
+            disp();
+            break;
+        case 4:
+            printf("Exiting . . . ");
+            return 0;
+        default:
+            printf("WRONG CHOICE\n");
+        }
+    }
+    return 0;
+}
+
+void enq(int data, int p)
+{
+    if (rear >= MAX - 1)
+    {
+        printf("OVERFLOW\n");
+    }
+    else
+    {
+        if (front == -1 && rear == -1)
+        {
+            front = rear = 0;
+        }
+        else
+        {
+            rear++;
+        }
+        pq[rear].item = data;
+        pq[rear].priority = p;
+        sort();
+    }
+}
+
+void deq()
+{
+    if (front == -1)
+    {
+        printf("UNDERFLOW\n");
+    }
+    else
+    {
+        printf("Dequeued item: %d with priority: %d\n", pq[front].item, pq[front].priority);
+        if (front == rear)
+        {
+            front = rear = -1;
+        }
+        else
+        {
+            front++;
+        }
+    }
+}
+
+void sort()
+{
+    struct priority temp;
+    for (int i = front; i < rear; i++)
+    {
+        for (int j = front; j < rear - i + front; j++)
+        {
+            if (pq[j].priority > pq[j + 1].priority)
+            {
+                temp = pq[j];
+                pq[j] = pq[j + 1];
+                pq[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void disp()
+{
+    if (front == -1)
+    {
+        printf("Queue is empty\n");
+    }
+    else
+    {
+        printf("Queue elements are:\n");
+        for (int i = front; i <= rear; i++)
+        {
+            printf("Item: %d Priority: %d\n", pq[i].item, pq[i].priority);
+        }
+    }
+}
+
+/// output
+
+-MENU-
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the data: 55
+Enter the priority: 1
+-MENU-
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 3
+Queue elements are:
+Item: 55 Priority: 1
+-MENU-
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the data: 77
+Enter the priority: 2
+-MENU-
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 3
+Queue elements are:
+Item: 55 Priority: 1
+Item: 77 Priority: 2
+-MENU-
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the data: 66
+Enter the priority: 0
+-MENU-
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 3
+Queue elements are:
+Item: 66 Priority: 0
+Item: 55 Priority: 1
+Item: 77 Priority: 2
+-MENU-
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 
+2
+Dequeued item: 66 with priority: 0
+-MENU-
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 4 
+Exiting . . .
+////

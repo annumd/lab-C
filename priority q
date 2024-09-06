@@ -131,23 +131,23 @@ void disp()
 3.Display
 4.Exit
 Enter your choice: 1
-Enter the data: 55
-Enter the priority: 1
--MENU-
-1.Enqueue
-2.Dequeue
-3.Display
-4.Exit
-Enter your choice: 3
-Queue elements are:
-Item: 55 Priority: 1
+Enter the data: 10
+Enter the priority: 5
 -MENU-
 1.Enqueue
 2.Dequeue
 3.Display
 4.Exit
 Enter your choice: 1
-Enter the data: 77
+Enter the data: 20
+Enter the priority: 1
+-MENU-
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the data: 30
 Enter the priority: 2
 -MENU-
 1.Enqueue
@@ -156,16 +156,16 @@ Enter the priority: 2
 4.Exit
 Enter your choice: 3
 Queue elements are:
-Item: 55 Priority: 1
-Item: 77 Priority: 2
+Item: 20 Priority: 1
+Item: 30 Priority: 2
+Item: 10 Priority: 5
 -MENU-
 1.Enqueue
 2.Dequeue
 3.Display
 4.Exit
-Enter your choice: 1
-Enter the data: 66
-Enter the priority: 0
+Enter your choice: 2
+Dequeued item: 20 with priority: 1
 -MENU-
 1.Enqueue
 2.Dequeue
@@ -173,22 +173,10 @@ Enter the priority: 0
 4.Exit
 Enter your choice: 3
 Queue elements are:
-Item: 66 Priority: 0
-Item: 55 Priority: 1
-Item: 77 Priority: 2
+Item: 30 Priority: 2
+Item: 10 Priority: 5
 -MENU-
 1.Enqueue
 2.Dequeue
 3.Display
 4.Exit
-Enter your choice: 
-2
-Dequeued item: 66 with priority: 0
--MENU-
-1.Enqueue
-2.Dequeue
-3.Display
-4.Exit
-Enter your choice: 4 
-Exiting . . .
-////

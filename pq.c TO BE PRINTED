@@ -1,0 +1,220 @@
+#include <stdio.h>
+#define MAX 3
+int rear=-1;
+int front=-1;
+
+struct priority
+{
+	int item;
+	int priority;
+}
+pqueue[MAX];
+
+void enqueue(int data,int pr);
+void display();
+void sort();
+void dequeue();
+int main()
+{
+	int ch;
+	int data;
+	int pr;
+do
+{
+	printf("Choose an option from the following\n");
+	printf("\n(1)ENQUEUE\n(2)DEQUEUE\n(3)DISPLAY\n(4)EXIT\n");
+	printf("Enter your choice: ");
+	scanf("%d",&ch);
+switch(ch)
+{
+case 1:
+	printf("Enter the data:\n");
+	scanf("%d",&data);
+	printf("Enter priority:\n");
+	scanf("%d",&pr);
+	enqueue(data,pr);
+	break;
+case 2:
+	dequeue();
+	break;
+case 3:
+	display();
+	break;
+case 4:
+	break;
+
+default:
+	printf("invalid choice!\n");
+}
+}while(ch!=4);
+}
+
+void enqueue(int data, int pr)
+{
+	if (rear>=MAX-1)
+	{
+		printf("Queue is full (Overflow)\n");
+	}
+	else if(front==-1 && rear==-1)
+	{
+		front=0;
+		rear=0;
+	}
+	else
+	{
+		rear=rear+1;
+	}
+pqueue[rear].item = data;
+pqueue[rear].priority = pr;
+
+struct priority temp;
+for (int i=front;i<rear;i++)
+{
+for (int j=front;j<rear-i+front;j++)
+{
+if (pqueue[j].priority>pqueue[j+1].priority)
+{
+	temp = pqueue[j];
+	pqueue[j] = pqueue[j + 1];
+	pqueue[j + 1] = temp;
+	}
+}
+}
+}
+
+void display()
+{
+if (front==-1)
+{
+printf("Queue is empty (Underflow)\n");
+}
+else
+{
+printf("Queue elements are: \n");
+for (int i=front;i<=rear;i++)
+{
+printf("Element: %d\nPriority: %d\n\n", pqueue[i].item, pqueue[i].priority);
+}
+}
+}
+
+void dequeue()
+{
+if(front==-1&rear==-1)
+{
+	printf("Queue is empty");
+}
+else
+{
+	printf("Dequeued item: %d with priority: %d\n\n",pqueue[front].item,pqueue[front].priority);
+if (front==rear)
+{
+	front=-1;
+	rear=-1;
+}
+else
+{
+	front=front+1;
+}
+}
+}
+
+OUTPUT
+
+ubuntu@ubuntu:~$ cd SCS1051123
+ubuntu@ubuntu:~/SCS1051123$ gcc pq.c
+ubuntu@ubuntu:~/SCS1051123$ ./a.out
+Choose an option from the following
+
+(1)ENQUEUE
+(2)DEQUEUE
+(3)DISPLAY
+(4)EXIT
+Enter your choice: 1
+Enter the data:
+30
+Enter priority:
+3
+Choose an option from the following
+
+(1)ENQUEUE
+(2)DEQUEUE
+(3)DISPLAY
+(4)EXIT
+Enter your choice: 1
+Enter the data:
+10
+Enter priority:
+1
+Choose an option from the following
+
+(1)ENQUEUE
+(2)DEQUEUE
+(3)DISPLAY
+(4)EXIT
+Enter your choice: 1
+Enter the data:
+20
+Enter priority:
+2
+Choose an option from the following
+
+(1)ENQUEUE
+(2)DEQUEUE
+(3)DISPLAY
+(4)EXIT
+Enter your choice: 3
+Queue elements are: 
+Element: 10
+Priority: 1
+
+Element: 20
+Priority: 2
+
+Element: 30
+Priority: 3
+
+Choose an option from the following
+
+(1)ENQUEUE
+(2)DEQUEUE
+(3)DISPLAY
+(4)EXIT
+Enter your choice: 2
+Dequeued item: 10 with priority: 1
+
+Choose an option from the following
+
+(1)ENQUEUE
+(2)DEQUEUE
+(3)DISPLAY
+(4)EXIT
+Enter your choice: 2
+Dequeued item: 20 with priority: 2
+
+Choose an option from the following
+
+(1)ENQUEUE
+(2)DEQUEUE
+(3)DISPLAY
+(4)EXIT
+Enter your choice: 2
+Dequeued item: 30 with priority: 3
+
+Choose an option from the following
+
+(1)ENQUEUE
+(2)DEQUEUE
+(3)DISPLAY
+(4)EXIT
+Enter your choice: 3
+Queue is empty (Underflow)
+Choose an option from the following
+
+(1)ENQUEUE
+(2)DEQUEUE
+(3)DISPLAY
+(4)EXIT
+Enter your choice: 4
+ubuntu@ubuntu:~/SCS1051123$ 
+

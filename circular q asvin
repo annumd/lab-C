@@ -1,0 +1,207 @@
+#include<stdio.h>
+int queue[40];
+int front=-1;
+int rear=-1;
+int MAX;
+void enqueue();
+void dequeue();
+void display();
+int main()
+{
+printf("\nenter the size of the array:");
+scanf("%d",&MAX);
+int ch = 0;
+while(ch != 4)
+{
+printf("\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
+printf("Enter your choice: ");
+scanf("%d",&ch);
+switch (ch)
+{
+case 1:
+enqueue();
+break;
+case 2:
+dequeue();
+break;
+case 3:
+display();
+break;
+case 4:
+printf("Exiting\n");
+break;
+default:
+printf("Invalid choice\n");
+}
+}
+}
+return 0;
+void enqueue()
+{
+int item;
+if((rear+1) % MAX == front)
+{
+printf("Queue Overflow\n");
+}
+else
+{printf("Enter the item to be inserted into the queue: ");
+scanf("%d",&item);
+}
+}
+if(front == -1 && rear == -1)
+{
+front = 0;
+rear = 0;
+}
+else
+{
+rear = (rear+1) % MAX;
+}
+queue[rear] = item;
+printf("Inserted %d\n", item);
+void dequeue()
+{
+if(front == -1 && rear == -1)
+{
+printf("Queue Underflow\n");
+}
+else
+{
+int item = queue[front];
+printf("%d element was deleted\n", item);
+}
+}
+if(front == rear)
+{
+front = -1;
+rear = -1;
+}
+else
+{
+front = (front+1) % MAX;
+}
+void display()
+{
+if(front == -1)
+{
+printf("Queue is empty\n");
+}
+else
+{
+printf("Queue elements are: ");
+int i = front;
+while(i != rear)
+{printf("%d\t", queue[i]);
+i = (i+1) % MAX;
+}
+}
+}
+printf("%d\n", queue[rear]);
+output:
+ubuntu@ubuntu-H81M-S:~/aswin12$ gedit cq.c
+ubuntu@ubuntu-H81M-S:~/aswin12$ gcc cq.c
+ubuntu@ubuntu-H81M-S:~/aswin12$ ./a.out
+enter the size of the array:3
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the item to be inserted into the queue: 22
+Inserted 22
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the item to be inserted into the queue: 89
+Inserted 89
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the item to be inserted into the queue: 90
+Inserted 90
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Queue Overflow
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 3
+Queue elements are: 22
+89
+901.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 2
+22 element was deleted
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 2
+89 element was deleted
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the item to be inserted into the queue: 67
+Inserted 67
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the item to be inserted into the queue: 98
+Inserted 98
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Queue Overflow
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 3
+Queue elements are: 90
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 2
+90 element was deleted
+67
+981.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 2
+67 element was deleted
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 2
+98 element was deleted
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 2
+Queue Underflow
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 4
+Exiting

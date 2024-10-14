@@ -19,34 +19,33 @@ int main()
 	int ch;
 	int data;
 	int pr;
-do
-{
-	printf("Choose an option from the following\n");
-	printf("\n(1)ENQUEUE\n(2)DEQUEUE\n(3)DISPLAY\n(4)EXIT\n");
-	printf("Enter your choice: ");
-	scanf("%d",&ch);
-switch(ch)
-{
-case 1:
-	printf("Enter the data:\n");
-	scanf("%d",&data);
-	printf("Enter priority:\n");
-	scanf("%d",&pr);
-	enqueue(data,pr);
-	break;
-case 2:
-	dequeue();
-	break;
-case 3:
-	display();
-	break;
-case 4:
-	break;
-
-default:
-	printf("invalid choice!\n");
-}
-}while(ch!=4);
+	do{
+		printf("Choose an option from the following\n");
+		printf("\n(1)ENQUEUE\n(2)DEQUEUE\n(3)DISPLAY\n(4)EXIT\n");
+		printf("Enter your choice: ");
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			case 1:
+				printf("Enter the data:\n");
+				scanf("%d",&data);
+				printf("Enter priority:\n");
+				scanf("%d",&pr);
+				enqueue(data,pr);
+				break;
+			case 2:
+				dequeue();
+				break;
+			case 3:
+				display();
+				break;
+			case 4:
+				break;
+			
+			default:
+				printf("invalid choice!\n");
+		}
+	}while(ch!=4);
 }
 
 void enqueue(int data, int pr)
@@ -68,55 +67,55 @@ pqueue[rear].item = data;
 pqueue[rear].priority = pr;
 
 struct priority temp;
-for (int i=front;i<rear;i++)
-{
-for (int j=front;j<rear-i+front;j++)
-{
-if (pqueue[j].priority>pqueue[j+1].priority)
-{
-	temp = pqueue[j];
-	pqueue[j] = pqueue[j + 1];
-	pqueue[j + 1] = temp;
+	for (int i=front;i<rear;i++)
+	{
+		for (int j=front;j<rear-i+front;j++)
+		{
+			if (pqueue[j].priority>pqueue[j+1].priority)
+			{
+			temp = pqueue[j];
+			pqueue[j] = pqueue[j + 1];
+			pqueue[j + 1] = temp;
+			}
+		}
 	}
-}
-}
 }
 
 void display()
 {
-if (front==-1)
-{
-printf("Queue is empty (Underflow)\n");
-}
-else
-{
-printf("Queue elements are: \n");
-for (int i=front;i<=rear;i++)
-{
-printf("Element: %d\nPriority: %d\n\n", pqueue[i].item, pqueue[i].priority);
-}
-}
+	if (front==-1)
+	{
+	printf("Queue is empty (Underflow)\n");
+	}
+	else
+	{
+		printf("Queue elements are: \n");
+		for (int i=front;i<=rear;i++)
+		{
+			printf("Element: %d\nPriority: %d\n\n", pqueue[i].item, pqueue[i].priority);
+		}
+	}
 }
 
 void dequeue()
 {
-if(front==-1&rear==-1)
-{
+	if(front==-1&rear==-1)
+	{
 	printf("Queue is empty");
-}
-else
-{
-	printf("Dequeued item: %d with priority: %d\n\n",pqueue[front].item,pqueue[front].priority);
-if (front==rear)
-{
-	front=-1;
-	rear=-1;
-}
-else
-{
-	front=front+1;
-}
-}
+	}
+	else
+	{
+		printf("Dequeued item: %d with priority: %d\n\n",pqueue[front].item,pqueue[front].priority);
+		if (front==rear)
+		{
+			front=-1;
+			rear=-1;
+		}
+		else
+		{
+			front=front+1;
+		}
+	}
 }
 
 OUTPUT

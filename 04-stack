@@ -1,7 +1,5 @@
 #include <stdio.h>
-
 #define MAX_SIZE 10  // Define a maximum stack size to prevent overflow issues
-
 int stack[MAX_SIZE], top = -1, n;
 
 void push();
@@ -47,7 +45,6 @@ int main()
                 break;
         }
     }
-
     return 0;  // Return from main
 }
 

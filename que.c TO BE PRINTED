@@ -2,95 +2,32 @@
 #include<stdlib.h>
 #define max 5
 int enqueue(int q[],int rear)ubuntu@ubuntu:~/SCS1051123$ ./a.out
-
-(1)insert
-(2)delete
-(3)display
-(4)exit
-Enter choice: 1
-Enter the number : 30
-
-(1)insert
-(2)delete
-(3)display
-(4)exit
-Enter choice: 1
-Enter the number : 20
-
-(1)insert
-(2)delete
-(3)display
-(4)exit
-Enter choice: 1
-Enter the number : 50
-
-(1)insert
-(2)delete
-(3)display
-(4)exit
-Enter choice: 3
-30	20	50	
-(1)insert
-(2)delete
-(3)display
-(4)exit
-Enter choice: 2
-deleted number is: 30
-(1)insert
-(2)delete
-(3)display
-(4)exit
-Enter choice: 3
-20	50	
-(1)insert
-(2)delete
-(3)display
-(4)exit
-Enter choice: 2
-deleted number is: 20
-(1)insert
-(2)delete
-(3)display
-(4)exit
-Enter choice: 2
-deleted number is: 50
-(1)insert
-(2)delete
-(3)display
-(4)exit
-Enter choice: 2
-queue is empty
-
-(1)insert
-(2)delete
-(3)display
-(4)exit
-Enter choice: 4
-
 {
-if(rear==max-1)
+	if(rear==max-1)
+	{
+		printf("-queue is full-\n");
+	}
+	else
+	{
+		printf("Enter the number : ");
+		scanf("%d",&q[++rear]);
+	}
+	return (rear);
+}
+
+int dequeue(int q[],int rear,int front)
 {
-	printf("-queue is full-\n");
+	if(front>rear)
+	{
+		printf("queue is empty\n");
+	}
+	else
+	{
+		printf("deleted number is: %d",q[front++]);
+	}
+	return(front);
 }
-else
-{
-	printf("Enter the number : ");
-	scanf("%d",&q[++rear]);
-}
-return (rear);
-}
-	int dequeue(int q[],int rear,int front)
-{
-if(front>rear)
-{
-printf("queue is empty\n");
-}
-else
-{
-printf("deleted number is: %d",q[front++]);
-}
-return(front);
-}
+
 void display(int q[],int rear,int front)
 {
 	int i;
@@ -104,39 +41,39 @@ void display(int q[],int rear,int front)
 		{
 			printf("%d\t",q[i]);
 		}
-}
+	}
 }
 void main()
 {
 	int queue[max],rear=-1,front=0,choice;
 	while(1)
-{
-printf("\n(1)insert\n(2)delete\n(3)display\n(4)exit\n");
-printf("Enter choice: ");
-scanf("%d",&choice);
-switch(choice)
-{
-case 1:
-{
-rear=enqueue(queue,rear);
-break;
-}
-case 2:
-{
-front=dequeue(queue,rear,front);
-break;
-}
-case 3:
-{
-display(queue,rear,front);
-break;
-}
-case 4:
-{
-exit(0);
-}
-}
-}
+	{
+		printf("\n(1)insert\n(2)delete\n(3)display\n(4)exit\n");
+		printf("Enter choice: ");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+			case 1:
+			{
+				rear=enqueue(queue,rear);
+				break;
+			}
+			case 2:
+			{
+				front=dequeue(queue,rear,front);
+				break;
+			}
+			case 3:
+			{
+				display(queue,rear,front);
+				break;
+			}
+			case 4:
+			{
+				exit(0);
+			}
+		}
+	}
 }
 OUTPUT
 
